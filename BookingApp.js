@@ -2,7 +2,8 @@ var x = document.getElementById('mainid');
 x.style.border="border border-primary";
 var y =document.getElementById('container');
 y.style.textAlign="center";
-function getData(){
+function getData(event){
+    event.preventDefault();
 // var username = document.getElementById('fname').value;
 // var lastname = document.getElementById('lname').value;
 // var useremail = document.getElementById('e-mail').value;
@@ -39,6 +40,7 @@ let myObj_serialized = JSON.stringify(myObj);
 localStorage.setItem("myObj",myObj_serialized);
 let myObj_deserialized = JSON.parse(localStorage.getItem("myObj"));
 console.log(myObj_deserialized);
+
 }
 
 
