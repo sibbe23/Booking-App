@@ -46,7 +46,19 @@ function showUserONScreen(myObj){
 const parentElem =document.getElementById('listOfitems')
 const childElem = document.createElement('li')
 childElem.textContent=myObj.username+'-'+myObj.useremail+'-'+myObj.userphone
+
+
+const deleteButton =document.createElement('input')
+deleteButton.type = "button"
+deleteButton.value = "X"
+deleteButton.onclick=()=>{
+localStorage.removeItem(myObj.useremail)
+parentElem.removeChild(childElem)
+parentElem.removeChild(deleteButton)
+}
+
 parentElem.appendChild(childElem);
+childElem.appendChild(deleteButton);
 }
 }
 
