@@ -36,11 +36,18 @@ var myObj = {
   userdate :document.getElementById('date').value,
   usertime:document.getElementById('time').value,
 };
-let myObj_serialized = JSON.stringify(myObj);
-localStorage.setItem("myObj",myObj_serialized);
+ let myObj_serialized = JSON.stringify(myObj);
+ localStorage.setItem("myObj",myObj_serialized);
 let myObj_deserialized = JSON.parse(localStorage.getItem("myObj"));
 console.log(myObj_deserialized);
-
+localStorage.setItem(myObj.useremail,JSON.stringify(myObj_deserialized));
+ showUserONScreen(myObj_deserialized)
+function showUserONScreen(myObj){
+const parentElem =document.getElementById('listOfitems')
+const childElem = document.createElement('li')
+childElem.textContent=myObj.username+'-'+myObj.useremail+'-'+myObj.userphone
+parentElem.appendChild(childElem);
+}
 }
 
 
