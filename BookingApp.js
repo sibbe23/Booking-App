@@ -59,6 +59,21 @@ parentElem.removeChild(deleteButton)
 
 parentElem.appendChild(childElem);
 childElem.appendChild(deleteButton);
+
+const editButton =document.createElement('input')
+editButton.type = "button"
+editButton.value = "Edit"
+editButton.onclick=()=>{
+localStorage.removeItem(myObj.useremail)
+parentElem.removeChild(childElem)
+document.getElementById('fname').value = myObj.username
+document.getElementById('lname').value = myObj.lastname
+document.getElementById('e-mail').value = myObj.useremail
+document.getElementById('tel').value = myObj.userphone
+}
+
+parentElem.appendChild(childElem);
+childElem.appendChild(editButton);
 }
 }
 
