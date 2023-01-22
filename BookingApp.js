@@ -4,6 +4,7 @@ var y =document.getElementById('container');
 y.style.textAlign="center";
 function getData(event){
     event.preventDefault();
+    
 // var username = document.getElementById('fname').value;
 // var lastname = document.getElementById('lname').value;
 // var useremail = document.getElementById('e-mail').value;
@@ -21,7 +22,17 @@ function getData(event){
 // localStorage.setItem('Contact',userphone)
 // localStorage.setItem('Date Booked',userdate)
 // localStorage.setItem('Time selected',usertime)
+window.addEventListener("DOMContentLoaded",()=>{
+  axios.get("https://crudcrud.com/api/bc274f1a27194d90b0d2563bcc7a5a57/bookingapp")
+  .then((response)=>{
+    console.log(response);
+    showUserONScreen(myObj_deserialized)
 
+  })
+  .catch((err)=>{
+      console.log(err);
+  })
+})
 var username;
 var lastname;
 var useremail;
@@ -49,13 +60,13 @@ console.log(myObj_deserialized);
  .catch((err)=>{
      console.log(err);
  })
+ 
 
-  showUserONScreen(myObj_deserialized)
-
+ showUserONScreen(myObj_deserialized)
   
 
 function showUserONScreen(myObj){
- 
+
 
 const parentElem =document.getElementById('listOfitems')
 const childElem = document.createElement('li')
@@ -66,7 +77,7 @@ const deleteButton =document.createElement('input')
 deleteButton.type = "button"
 deleteButton.value = "X"
 deleteButton.onclick=()=>{
-//localStorage.removeItem(myObj.useremail)
+localStorage.removeItem(myObj.useremail)
 parentElem.removeChild(childElem)
 parentElem.removeChild(deleteButton)
 }
@@ -78,7 +89,7 @@ const editButton =document.createElement('input')
 editButton.type = "button"
 editButton.value = "Edit"
 editButton.onclick=()=>{
-//localStorage.removeItem(myObj.useremail)
+localStorage.removeItem(myObj.useremail)
 parentElem.removeChild(childElem)
 document.getElementById('fname').value = myObj.username
 document.getElementById('lname').value = myObj.lastname
