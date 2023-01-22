@@ -63,7 +63,25 @@ console.log(myObj_deserialized);
  
 
  showUserONScreen(myObj_deserialized)
-  
+ 
+ 
+
+
+
+
+function editUser(email,name,mobile)
+{
+  document.getElementById('fname').value = name;
+  document.getElementById('lname').value = name
+  document.getElementById('e-mail').value =email
+  document.getElementById('tel').value =mobile
+}
+
+editUser(myObj.useremail,myObj.username,myObj.userphone);
+
+
+
+
 
 function showUserONScreen(myObj){
 
