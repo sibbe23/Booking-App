@@ -55,7 +55,7 @@ console.log(myObj_deserialized);
  axios.post("https://crudcrud.com/api/bc274f1a27194d90b0d2563bcc7a5a57/bookingapp",myObj)
 
  .then((response)=>{
-     console.log(response);
+  showUserONScreen(response.data)
  })
  .catch((err)=>{
      console.log(err);
@@ -67,7 +67,27 @@ console.log(myObj_deserialized);
 
 function showUserONScreen(myObj){
 
+myObj = {
+  _id:'',
+  name:'',
+  email:'',
+  mobile:'',
+}
+axios.delete(`https://crudcrud.com/api/bc274f1a27194d90b0d2563bcc7a5a57/bookingapp/${myObj._id}`)
 
+  .then((response)=>
+  {
+    document.getElementById('fname').value = myObj.name;
+    document.getElementById('lname').value = myObj.name
+    document.getElementById('e-mail').value = myObj.email
+    document.getElementById('tel').value = myObj.mobile
+  })
+  .catch((err)=>
+  {
+    console.log(err);
+  })
+
+}
 const parentElem =document.getElementById('listOfitems')
 const childElem = document.createElement('li')
 childElem.textContent=myObj.username+'-'+myObj.useremail+'-'+myObj.userphone
@@ -77,7 +97,8 @@ const deleteButton =document.createElement('input')
 deleteButton.type = "button"
 deleteButton.value = "X"
 deleteButton.onclick=()=>{
-localStorage.removeItem(myObj.useremail)
+
+localStorage.removeItem(myObj.email)
 parentElem.removeChild(childElem)
 parentElem.removeChild(deleteButton)
 }
@@ -89,15 +110,18 @@ const editButton =document.createElement('input')
 editButton.type = "button"
 editButton.value = "Edit"
 editButton.onclick=()=>{
+
+
+
 localStorage.removeItem(myObj.useremail)
 parentElem.removeChild(childElem)
-document.getElementById('fname').value = myObj.username
-document.getElementById('lname').value = myObj.lastname
-document.getElementById('e-mail').value = myObj.useremail
-document.getElementById('tel').value = myObj.userphone
+document.getElementById('fname').value = myObj.name
+document.getElementById('lname').value = myObj.name
+document.getElementById('e-mail').value = myObj.email
+document.getElementById('tel').value = myObj.mobile
 }
 
 parentElem.appendChild(childElem);
 childElem.appendChild(editButton);
 }
-}
+
